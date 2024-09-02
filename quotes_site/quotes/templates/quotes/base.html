@@ -21,17 +21,21 @@
         </div>
         <div class="col-md-4">
             <p>
-
-                <a href="/login" class="btn btn-primary">SignUp</a>
-                <a href="/login" class="btn btn-primary">Login</a>
-                <a href="/login" class="btn btn-primary">Logout</a>
-
+                {% if user.is_authenticated %}
+                    <form action="{% url 'users:logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Logout</button>
+                    </form>
+                    <a href="{% url 'quotes:add_author' %}" class="btn btn-primary">Add Author</a>
+                {% else %}
+                    <a href="{% url 'users:register' %}" class="btn btn-primary">Sign Up</a>
+                    <a href="{% url 'users:login' %}" class="btn btn-primary">Login</a>
+                {% endif %}
             </p>
         </div>
     </div>
 
-
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 
 </div>
 </body>

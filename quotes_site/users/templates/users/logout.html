@@ -1,0 +1,7 @@
+{% extends "quotes/base.html" %}
+
+{% block content %}
+<h2>Logged out</h2>
+<p>You have been logged out successfully.</p>
+<a href="{% url 'quotes:root' %}" class="btn btn-primary">Back to Home</a>
+{% endblock %}

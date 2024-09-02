@@ -1,0 +1,28 @@
+{% extends "quotes/base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>{{ author.fullname }}</h2>
+        <p><strong>Born Date:</strong> {{ author.born_date }}</p>
+        <p><strong>Born Location:</strong> {{ author.born_location }}</p>
+        <p><strong>Description:</strong> {{ author.description }}</p>
+
+        <h3>Quotes by {{ author.fullname }}</h3>
+        {% if quotes %}
+            <ul>
+                {% for quote in quotes %}
+                <li>
+                    <span class="text" itemprop="text">
+                        "{{ quote.quote }}"
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No quotes available for this author.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
