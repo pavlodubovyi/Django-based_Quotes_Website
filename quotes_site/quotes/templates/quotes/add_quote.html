@@ -4,6 +4,7 @@
   <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
+    <a href="{% url 'quotes:add_author' %}" class="btn btn-secondary mb-3">Add New Author</a>
     <button type="submit" class="btn btn-success">Add Quote</button>
   </form>
 {% endblock %}

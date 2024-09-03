@@ -27,6 +27,7 @@
                         <button type="submit" class="btn btn-primary">Logout</button>
                     </form>
                     <a href="{% url 'quotes:add_author' %}" class="btn btn-primary">Add Author</a>
+                    <a href="{% url 'quotes:add_quote' %}" class="btn btn-primary">Add Quote</a>
                 {% else %}
                     <a href="{% url 'users:register' %}" class="btn btn-primary">Sign Up</a>
                     <a href="{% url 'users:login' %}" class="btn btn-primary">Login</a>
