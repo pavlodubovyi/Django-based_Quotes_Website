@@ -53,3 +53,12 @@ def add_quote(request):
     else:
         form = QuoteForm()
     return render(request, "quotes/add_quote.html", {"form": form})
+
+
+def tag_quotes(request, tag_name):
+    quotes = Quote.objects.filter(tags__name=tag_name)
+    return render(
+        request,
+        "quotes/tag_quotes.html",
+        context={"quotes": quotes, "tag_name": tag_name},
+    )

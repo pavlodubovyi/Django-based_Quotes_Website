@@ -1,0 +1,13 @@
+{% extends "quotes/base.html" %}
+
+{% block content %}
+<h2>Quotes tagged with "{{ tag_name }}"</h2>
+{% for quote in quotes %}
+    <div class="quote">
+        <span class="text">“{{ quote.quote }}”</span>
+        <span>by <small class="author">{{ quote.author.fullname }}</small></span>
+    </div>
+{% empty %}
+    <p>No quotes found for this tag.</p>
+{% endfor %}
+{% endblock %}
