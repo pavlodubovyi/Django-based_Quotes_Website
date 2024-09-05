@@ -3,6 +3,9 @@
 import os
 import django
 from pymongo import MongoClient
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # from django.db import connection
 
@@ -23,7 +26,8 @@ from quotes.models import Author, Quote, Tag
 #     cursor.execute("ALTER SEQUENCE quotes_tag_id_seq RESTART WITH 1;")
 #     cursor.execute("ALTER SEQUENCE quotes_quote_id_seq RESTART WITH 1;")
 
-client = MongoClient("mongodb+srv://userweb21:567234@cluster0.vkwfwwg.mongodb.net/")
+mongo_uri = os.getenv("MONGO_URI")
+client = MongoClient(mongo_uri)
 db = client.get_database("PD_homework_8")
 
 authors = db.authors.find()
