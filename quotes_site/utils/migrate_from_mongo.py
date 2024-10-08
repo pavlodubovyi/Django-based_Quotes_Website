@@ -1,4 +1,4 @@
-"""Цей скрипт переносить дані з MongoDB до PostgreSQL"""
+"""This script is used to migrate data from MongoDB до PostgreSQL"""
 
 import os
 import django
@@ -14,13 +14,13 @@ django.setup()
 
 from quotes.models import Author, Quote, Tag
 
-# Подальший блок для того, щоб нумерація завжди починалась з 1
-# # Видалити всі записи з таблиць
+# The next blosk is used to reset sequences
+# # Delete all data from DB
 # Author.objects.all().delete()
 # Tag.objects.all().delete()
 # Quote.objects.all().delete()
 #
-# # Скинути послідовності
+# # Delete sequences
 # with connection.cursor() as cursor:
 #     cursor.execute("ALTER SEQUENCE quotes_author_id_seq RESTART WITH 1;")
 #     cursor.execute("ALTER SEQUENCE quotes_tag_id_seq RESTART WITH 1;")
