@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 
 
 # Application definition
@@ -133,3 +133,15 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DOMAIN = os.getenv("FRONTEND_URL")
+SITE_NAME = os.getenv("SITE_NAME")
+
+# Email backend (SMTP)
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.getenv("SMTP_SERVER")
+EMAIL_USE_SSL = True
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASS")
+DEFAULT_FROM_EMAIL = f"{SITE_NAME} <{EMAIL_HOST_USER}>"

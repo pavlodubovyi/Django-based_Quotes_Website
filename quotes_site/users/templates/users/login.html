@@ -6,4 +6,7 @@
     {{ form.as_p }}
     <button type="submit" class="btn btn-success">Login</button>
   </form>
+  <p>
+    <a href="{% url 'users:password_reset' %}">Lost the paper your password is written on? Just reset it!</a>
+  </p>
 {% endblock %}
