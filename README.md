@@ -61,7 +61,24 @@ docker compose down
 ```
 
 ## Notes
-The project uses PostgreSQL as its database.
 Email functionality (e.g., for password reset) is configured using the environment variables in the `.env` file.
+The project uses PostgreSQL as its database. You must already have the database created.
+
+### Migrate the database schema
+If the database is empty, run the following after starting the containers:
+
+```bash
+docker compose exec web poetry run python manage.py migrate
+```
+### Create a superuser
+To access the Django admin panel, create a superuser:
+```bash
+docker compose exec web poetry run python manage.py createsuperuser
+```
+### Stop and remove containers
+To stop and clean up Docker containers:
+```bash
+docker compose down
+```
 
 
