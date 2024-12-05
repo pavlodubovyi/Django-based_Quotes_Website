@@ -1,20 +1,67 @@
-Quotes Website on Django
+# Quotes Website on Django
+This project is a Django-based web application inspired by the site [Quotes to Scrape](https://quotes.toscrape.com/), with additional features and functionalities.
 
-This project is a Django-based web application inspired by the site http://quotes.toscrape.com, with additional features and functionalities.
-
-Features
-- User Registration and Authentication: Users can register and log in to the website.
-
-Author and Quote Management:
+## Features
+### User Registration and Authentication
+- Users can register and log in to the website.
+### Author and Quote Management
 - Registered users can add new authors to the website.
 - Registered users can also add new quotes and associate them with existing authors.
-- Database Migration:
-
-The site supports migrating data from existing MongoDB database to PostgreSQL.
-
-Public Access:
-The list of quotes and individual author pages are available for viewing without requiring user authentication.
-
-Additional Features:
-- Search by Tags: Users can search for quotes by clicking on a tag to display all quotes associated with it.
+### Public Access
+- The list of quotes and individual author pages are available for viewing without requiring user authentication.
+### Additional Features
+- Tags: Clicking on a tag displays all quotes associated with it.
 - Pagination: Users can navigate through the list of quotes using "Next" and "Previous" buttons.
+
+## Running the Project with Docker
+To run this project using Docker, follow these steps:
+
+1. Ensure Docker is installed on your machine.
+You can download it from [Docker's official website](https://www.docker.com/get-started).
+
+2. Clone this repository.
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
+3. Create a `.env` file in the root of the project and provide the necessary configuration. An example `.env` file:
+```dotenv
+# Django
+SECRET_KEY=your-secret-key
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+
+# PostgreSQL
+DB_NAME=authors_and_quotes
+DB_USER=your-db-username
+DB_PASSWORD=your-db-password
+DB_HOST=db
+DB_PORT=5432
+
+# Email configuration
+EMAIL_USER=your-email@example.com
+EMAIL_PASS=your-email-password
+SMTP_SERVER=smtp.example.com
+EMAIL_PORT=587
+FRONTEND_URL=http://127.0.0.1:8000
+SITE_NAME=Quotes Website
+```
+4. Run Docker Compose.
+In the root directory, where the `docker-compose.yml` file is located, execute:
+```bash
+docker compose up --build
+```
+5. Access the Website.
+Once the containers are running, the site will be available at:
+http://127.0.0.1:8000/
+6. Stop the Containers.
+To stop the application, press `Ctrl+C` or run:
+```bash
+docker compose down
+```
+
+## Notes
+The project uses PostgreSQL as its database.
+Email functionality (e.g., for password reset) is configured using the environment variables in the `.env` file.
+
+
